@@ -13,7 +13,6 @@ import java.net.*;
 import org.apache.commons.*;
 
 import io.github.kexanie.library.MathView;
-import org.apache.commons.io.*;
 import android.net.*;
 import android.content.*;
 import android.database.*;
