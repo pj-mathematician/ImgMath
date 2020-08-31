@@ -3,5 +3,11 @@
 
     <string name="app_name">ImgMath</string>
     <string name="hello_world">Hello world!</string>
+	<string name="ltx_url_main">https://latex.codecogs.com/png.latex?\\dpi{%1$s}&amp;space;\\bg_%2$s&amp;space;\\%3$s&amp;space;</string>
+	<string name="ltx_url_bg">white</string>
+	<string name="ltx_url_size">LARGE</string>
+	<string name="ltx_url_dpi">200</string>
+
+	
 
 </resources>

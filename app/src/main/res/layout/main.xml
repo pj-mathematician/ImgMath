@@ -13,7 +13,9 @@
 		android:layout_height="wrap_content"
 		android:hint="Enter Math Here"
 		android:id="@+id/main_input"
-		android:typeface="monospace"/>
+		android:typeface="monospace"
+		android:text="$$$$"
+		/>
 
 	<LinearLayout
 		android:orientation="horizontal"
