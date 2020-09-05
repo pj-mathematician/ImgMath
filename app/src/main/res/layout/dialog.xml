@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:gravity="top|center"
+	android:scrollbars="vertical"
+	android:scrollbarAlwaysDrawVerticalTrack="true">
+
+	<LinearLayout
+		android:orientation="horizontal"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:padding="15dp">
+
+		<LinearLayout
+			android:orientation="vertical"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:padding="3dp">
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="Dynamically render"
+				android:layout_gravity="left"
+				android:textSize="18sp"/>
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="Dynamically renders LaTeX if enabled"
+				android:textSize="11sp"
+				android:textColor="#555555"
+				android:gravity="center"/>
+
+		</LinearLayout>
+
+		<LinearLayout
+			android:orientation="horizontal"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:gravity="right">
+
+			<Switch
+				android:id="@+id/dynaswitch"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:checked="true"/>
+
+		</LinearLayout>
+
+	</LinearLayout>
+
+	<View
+		android:layout_width="match_parent"
+		android:layout_height="0.5dp"
+		android:background="#6F9AF1"/>
+
+	<LinearLayout
+		android:id="@+id/dspa"
+		android:orientation="horizontal"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:padding="15dp">
+
+		<LinearLayout
+			android:orientation="vertical"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:padding="3dp">
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="Resolution of Image"
+				android:layout_gravity="left"
+				android:textSize="18sp"/>
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="Resolution in DPI(Dots Per Inch)"
+				android:textSize="11sp"
+				android:textColor="#555555"
+				android:gravity="center"/>
+
+		</LinearLayout>
+
+		<LinearLayout
+			android:orientation="horizontal"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:gravity="right">
+
+			<Spinner
+				android:id="@+id/dpil"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:drawSelectorOnTop="true"
+				android:entries="@array/resolution"
+				android:layout_gravity="right"
+				android:gravity="right"/>
+
+		</LinearLayout>
+
+	</LinearLayout>
+
+	<View
+		android:layout_width="match_parent"
+		android:layout_height="0.5dp"
+		android:background="#6F9AF1"/>
+
+	<LinearLayout
+		android:id="@+id/rspa"
+		android:orientation="horizontal"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:padding="15dp"
+		android:gravity="right">
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="Background Colour of Image"
+			android:layout_gravity="left"
+			android:textSize="18sp"/>
+
+		<LinearLayout
+			android:orientation="horizontal"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:gravity="right">
+
+			<Spinner
+				android:id="@+id/bgl"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:entries="@array/bgcolor"
+				android:layout_gravity="right"
+				android:gravity="right"/>
+
+		</LinearLayout>
+
+	</LinearLayout>
+
+	<View
+		android:layout_width="match_parent"
+		android:layout_height="0.5dp"
+		android:background="#6F9AF1"/>
+
+	<LinearLayout
+		android:orientation="horizontal"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:padding="15dp">
+
+		<Button
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="Cancel"
+			android:padding="15dp"
+			android:layout_gravity="left"
+			android:id="@+id/canc"/>
+
+		<LinearLayout
+			android:orientation="horizontal"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:gravity="right">
+
+			<Button
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="Save"
+				android:id="@+id/saveit"
+				android:padding="15dp"/>
+
+		</LinearLayout>
+
+	</LinearLayout>
+
+</LinearLayout>
+

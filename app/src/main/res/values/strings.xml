@@ -7,6 +7,7 @@
 	<string name="ltx_url_bg">white</string>
 	<string name="ltx_url_size">LARGE</string>
 	<string name="ltx_url_dpi">200</string>
+	<string name="cur_count">0</string>
 
 	
 
