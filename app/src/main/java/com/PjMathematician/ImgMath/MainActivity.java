@@ -12,10 +12,10 @@ import android.view.View.*;
 import android.widget.*;
 import io.github.kexanie.library.*;
 import java.io.*;
-import android.util.*;
-import android.support.v7.widget.*;
+//import com.rarepebble.colorpicker.ColorPickerView;;
 public class MainActivity extends Activity 
 { 
+    //@BindView(R.id.formula_one)
     MathView formula_one;
     private SharedPreferences mPreferences;
 	private String sharedPrefFile = "com.PjMathematician.ImgMath";
@@ -43,114 +43,76 @@ public class MainActivity extends Activity
 		final Button button2 = findViewById(R.id.save_button);
         final EditText txt = findViewById(R.id.main_input);
 		final MathView formula_one = findViewById(R.id.formula_one);
-		txt.setSelection(2);
-		txt.setFocusableInTouchMode(true);
-		txt.addTextChangedListener(new TextWatcher(){
+		try
+		{
+			if (txt.getText().toString().length() >= 2)
+			{
+				txt.setSelection(2);
+			}
+			//txt.setFocusableInTouchMode(true);
 
-                int blen=0;
-				//SharedPreferences.Editor preferencesEditor = mPreferences.edit();
-				boolean inp=true;
-				String lcd="";		
-				@Override
-				public void beforeTextChanged(CharSequence p1, int p2, int p3, int p4)
-				{
-					String tex=txt.getText().toString();
-					//textView.setText(ind);
-					blen = tex.length();
-					//if(txt.hasSelection()){
-					//textView.setText(("fool"));
-					//}
+			txt.addTextChangedListener(new TextWatcher(){
 
-				}
-
-				@Override
-				public void onTextChanged(CharSequence p1, int p2, int p3, int p4)
-				{
-					String tex=txt.getText().toString();
-					int inm=txt.getSelectionStart();
-					
-					//textView.setText(inm);
-					//String tmp=inm+"";
-					//inm=Integer.parseInt(tmp);
-					//textView.setText(tex.substring(inm-1,inm));
-					String lch="";
-					if (tex.length() > 4)
+					int blen=0;
+					//SharedPreferences.Editor preferencesEditor = mPreferences.edit();
+					//boolean inp=true;
+					//String lcd="";
+					int before_length=4;
+					@Override
+					public void beforeTextChanged(CharSequence p1, int p2, int p3, int p4)
 					{
-						lch = tex.substring(inm - 1, inm);
-					}
-					else
-					{
-						lch = "$";
-					}
-					boolean bk=true;
-					if (tex.length() < blen)
-					{bk = false;}
-					button2.setVisibility(-1);
-			        formula_one.setText(tex);
-					String s_=txt.getText().toString();
-					String s=txt.getText().toString();
-					int k=tex.length() - 1;
-					boolean insert=false;
-
-					while (s_.lastIndexOf("_") != -1)
-					{
-						int m=s_.lastIndexOf("_");
-						if (s_.substring(m + 1, m + 2).equals("{"))
+						if (txt.getText().toString().length() >= 2)
 						{
-							s_ = s_.substring(0, m);
-					    }
-						else
+							String tex=txt.getText().toString();
+							before_length = txt.length();
+						}            
+					}
+
+					@Override
+					public void onTextChanged(CharSequence p1, int p2, int p3, int p4)
+					{
+						try
 						{
-							insert = true;
-							k = m;
-							break;
+							String tex=txt.getText().toString();
+							Boolean insert=false;
+							Boolean backspace = false;
+							if (tex.length() < before_length)
+							{
+								backspace = true;
+							}
+							textView.setText(tex.substring(txt.getSelectionStart() - 1, txt.getSelectionStart()));
+							String last_char = tex.substring(txt.getSelectionStart() - 1, txt.getSelectionStart());
+							if ((last_char.equals("_") || last_char.equals("^")) && (!backspace))
+							{
+								insert = true;
+								txt.getText().insert(txt.getSelectionStart(), "{");
+								//txt.getText().insert(txt.getSelectionStart(),"}");
+								txt.setSelection(txt.getSelectionStart());
+							}
+							if ((last_char.equals("{") && !insert) && !backspace)
+							{
+								txt.getText().insert(txt.getSelectionStart(), "}");
+								txt.setSelection(txt.getSelectionStart() - 1);
+							}
+							formula_one.setText(txt.getText().toString());
 						}
-				    }
-					while (s.lastIndexOf("^") != -1)
-					{
-						int m=s.lastIndexOf("^");
-						if (s.substring(m + 1, m + 2).equals("{"))
+						catch (Exception e)
 						{
-							s = s.substring(0, m);
-					    }
-						else
-						{
-							insert = true;
-							k = m;
-							break;
+							txt.setSelection(txt.getText().toString().length() - 2);
 						}
-				    }
-					//ADD METHOD TO COMPLETE {
-                    //textView.setText(ind);
-
-					if (insert && bk)
-					{
-						txt.getText().insert(txt.getSelectionStart(), "{");
-						//txt.getText().insert(txt.getSelectionStart(), "}");
-						txt.setSelection(k + 2);
-						//inp=false;
-						textView.setText("done?");
 					}
-					//textView.setText("ok");
-					if (((lch.equals("{")) && bk))
+					@Override
+					public void afterTextChanged(Editable p1)
 					{
-						txt.getText().insert(inm, "}");
-						txt.setSelection(inm);
+
+						//txt.setSelected(true);
 					}
 
 
-
-
-                }
-				@Override
-				public void afterTextChanged(Editable p1)
-				{
-
-					//txt.setSelected(true);
-				}
-
-
-			}); 
+				}); 
+		}
+		catch (Exception e)
+		{}
 
         button.setOnClickListener(new OnClickListener() {
 				@Override
@@ -255,17 +217,17 @@ public class MainActivity extends Activity
 		switch (item.getItemId())
 		{
 			case R.id.option:
-				SharedPreferences.Editor preferencesEditor = mPreferences.edit();
-				Dialog dialog = new Dialog(this);
+				final SharedPreferences.Editor preferencesEditor = mPreferences.edit();
+				final Dialog dialog = new Dialog(this);
 				WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
 				lp.copyFrom(dialog.getWindow().getAttributes());
 				lp.width = WindowManager.LayoutParams.WRAP_CONTENT;
 				lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
 				dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
 				dialog.setContentView(R.layout.dialog);
-				Switch s=dialog.findViewById(R.id.dynaswitch);
+				final Switch s=dialog.findViewById(R.id.dynaswitch);
 				s.setChecked(mPreferences.getBoolean("dynam", true));
-				Spinner spdpi = dialog.findViewById(R.id.dpil);
+				final Spinner spdpi = dialog.findViewById(R.id.dpil);
 				if (mPreferences.getString("ltx_url_dpi", "").equals("100"))
 				{
 					spdpi.setSelection(0);
@@ -282,51 +244,122 @@ public class MainActivity extends Activity
 				{
 					spdpi.setSelection(3);
 				}
-				Spinner sbg = dialog.findViewById(R.id.bgl);
-				if (mPreferences.getString("ltx_url_bg", "").equals("Transparent"))
+				else if (mPreferences.getString("ltx_url_dpi", "").equals("1000"))
 				{
-					sbg.setSelection(0);
+					spdpi.setSelection(4);
 				}
-				else if (mPreferences.getString("ltx_url_bg", "").equals("white"))
-				{
-					sbg.setSelection(1);
-				}
-				else if (mPreferences.getString("ltx_url_bg", "").equals("black"))
-				{
-					sbg.setSelection(2);
-				}
-				else if (mPreferences.getString("ltx_url_bg", "").equals("blue"))
-				{
-					sbg.setSelection(3);
-				}
-				else if (mPreferences.getString("ltx_url_bg", "").equals("green"))
-				{
-					sbg.setSelection(4);
-				}
-				else if (mPreferences.getString("ltx_url_bg", "").equals("yellow"))
-				{
-					sbg.setSelection(5);
-				}
-				else if (mPreferences.getString("ltx_url_bg", "").equals("red"))
-				{
-					sbg.setSelection(6);
-				}
-
-
+//				final Spinner sbg = dialog.findViewById(R.id.bgl);
+//				if (mPreferences.getString("ltx_url_bg", "").equals("Transparent"))
+//				{
+//					sbg.setSelection(0);
+//				}
+//				else if (mPreferences.getString("ltx_url_bg", "").equals("white"))
+//				{
+//					sbg.setSelection(1);
+//				}
+//				else if (mPreferences.getString("ltx_url_bg", "").equals("black"))
+//				{
+//					sbg.setSelection(2);
+//				}
+//				else if (mPreferences.getString("ltx_url_bg", "").equals("blue"))
+//				{
+//					sbg.setSelection(3);
+//				}
+//				else if (mPreferences.getString("ltx_url_bg", "").equals("green"))
+//				{
+//					sbg.setSelection(4);
+//				}
+//				else if (mPreferences.getString("ltx_url_bg", "").equals("yellow"))
+//				{
+//					sbg.setSelection(5);
+//				}
+//				else if (mPreferences.getString("ltx_url_bg", "").equals("red"))
+//				{
+//					sbg.setSelection(6);
+//				}
+//
+//
 				dialog.show();
 				dialog.getWindow().setAttributes(lp);
-			case R.id.about:
-				//
-			default:
-			    return false;
+				Button saver = dialog.findViewById(R.id.saveit);
+				Button canceler = dialog.findViewById(R.id.canc);
+				saver.setOnClickListener(new OnClickListener(){
+
+						@Override
+						public void onClick(View p1)
+						{
+							int s1=spdpi.getSelectedItemPosition();
+							//int s2=sbg.getSelectedItemPosition();
+							preferencesEditor.putBoolean("dynam",s.isChecked());
+							switch (s1)
+							{
+								case 0:
+									preferencesEditor.putString("ltx_url_dpi", "100");
+									break;
+								case 1:
+									preferencesEditor.putString("ltx_url_dpi", "200");
+									break;
+								case 2:
+									preferencesEditor.putString("ltx_url_dpi", "300");
+									break;
+								case 3:
+									preferencesEditor.putString("ltx_url_dpi", "500");
+									break;
+								case 4:
+									preferencesEditor.putString("ltx_url_dpi", "1000");
+
+									break;
+								default:
+								    preferencesEditor.putString("ltx_url_dpi","200");
+									break;                                        
+							}
+//							switch(s2){
+//							    case 0:
+//							 	    preferencesEditor.putString("ltx_url_bg", "Transparent");
+//									break;
+//								case 1:
+//							      	preferencesEditor.putString("ltx_url_bg", "white");
+//									break;
+//								case 2:
+//								    preferencesEditor.putString("ltx_url_bg", "black");
+//									break;									
+//								case 3:
+//								    preferencesEditor.putString("ltx_url_bg", "blue");
+//									break;
+//								case 4:
+//								    preferencesEditor.putString("ltx_url_bg", "green");
+//									break;
+//								case 5:
+//								    preferencesEditor.putString("ltx_url_bg", "yellow");
+//									break;
+//								case 6:
+//								preferencesEditor.putString("ltx_url_bg", "red");
+//									break;
+//							}
+							preferencesEditor.commit();
+							dialog.cancel();
+						}
+						});
+					canceler.setOnClickListener(new OnClickListener(){
+
+						@Override
+						public void onClick(View p1)
+						{
+						dialog.cancel();
+							}
+						});
+					case R.id.about:
+			//
+				default:
+			return false;
+				}
 		}
-	}
 	@Override
 	protected void onResume()
 	{
-		super.onResume();
+	super.onResume();
 		EditText txt = findViewById(R.id.main_input);
 		txt.clearFocus();
-	}
+		}
 
-}
+	}

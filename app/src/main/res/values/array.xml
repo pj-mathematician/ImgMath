@@ -5,6 +5,7 @@
         <item>Standard (200)</item>
         <item>High (300)</item>
         <item>Very High (500)</item>
+		<item>Extreme (1000)</item>
     </string-array>
     <string-array name="bgcolor">
         <item>Transparent</item>

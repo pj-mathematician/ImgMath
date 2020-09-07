@@ -1,15 +1,16 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 21
+    compileSdkVersion 23
     buildToolsVersion "21.1.0"
+
 
     defaultConfig {
         applicationId "com.PjMathematician.ImgMath"
-        minSdkVersion 16
-        targetSdkVersion 21
-        versionCode 1
-        versionName "1.5.0"
+        minSdkVersion 17
+        targetSdkVersion 22
+        versionCode 151
+        versionName "1.5.1"
     }
     buildTypes {
         release {
@@ -22,10 +23,7 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
   
-	implementation 'com.android.support:appcompat-v7:27.1.1'
+	//implementation 'com.android.support:appcompat-v7:27.1.1'
 	implementation 'com.android.support:preference-v7:26.1.0'
 	compile 'io.github.kexanie.library:MathView:0.0.6'
-    
-	
-	
 }

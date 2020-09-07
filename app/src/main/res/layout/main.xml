@@ -7,6 +7,31 @@
 	android:gravity="center"
 	android:orientation="vertical">
 
+	<LinearLayout
+		android:orientation="horizontal"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:padding="10dp"
+		android:layout_marginBottom="30dp">
+
+		<Button
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="Background Colour"
+			android:id="@+id/bgpick"
+			android:layout_marginRight="15dp"
+			android:singleLine="false"/>
+
+		<Button
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:id="@+id/textpick"
+			android:text="Text Colour"
+			android:layout_marginLeft="15dp"
+			android:singleLine="false"/>
+
+	</LinearLayout>
+
 	<EditText
 		android:layout_width="wrap_content"
 		android:ems="10"

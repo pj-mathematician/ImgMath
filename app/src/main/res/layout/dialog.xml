@@ -112,7 +112,7 @@
 		android:layout_height="0.5dp"
 		android:background="#6F9AF1"/>
 
-	<LinearLayout
+<!--<LinearLayout
 		android:id="@+id/rspa"
 		android:orientation="horizontal"
 		android:layout_width="match_parent"
@@ -148,7 +148,7 @@
 	<View
 		android:layout_width="match_parent"
 		android:layout_height="0.5dp"
-		android:background="#6F9AF1"/>
+		android:background="#6F9AF1"/>-->
 
 	<LinearLayout
 		android:orientation="horizontal"
