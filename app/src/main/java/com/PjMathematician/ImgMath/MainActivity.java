@@ -248,37 +248,7 @@ public class MainActivity extends Activity
 				{
 					spdpi.setSelection(4);
 				}
-//				final Spinner sbg = dialog.findViewById(R.id.bgl);
-//				if (mPreferences.getString("ltx_url_bg", "").equals("Transparent"))
-//				{
-//					sbg.setSelection(0);
-//				}
-//				else if (mPreferences.getString("ltx_url_bg", "").equals("white"))
-//				{
-//					sbg.setSelection(1);
-//				}
-//				else if (mPreferences.getString("ltx_url_bg", "").equals("black"))
-//				{
-//					sbg.setSelection(2);
-//				}
-//				else if (mPreferences.getString("ltx_url_bg", "").equals("blue"))
-//				{
-//					sbg.setSelection(3);
-//				}
-//				else if (mPreferences.getString("ltx_url_bg", "").equals("green"))
-//				{
-//					sbg.setSelection(4);
-//				}
-//				else if (mPreferences.getString("ltx_url_bg", "").equals("yellow"))
-//				{
-//					sbg.setSelection(5);
-//				}
-//				else if (mPreferences.getString("ltx_url_bg", "").equals("red"))
-//				{
-//					sbg.setSelection(6);
-//				}
-//
-//
+
 				dialog.show();
 				dialog.getWindow().setAttributes(lp);
 				Button saver = dialog.findViewById(R.id.saveit);
@@ -313,29 +283,6 @@ public class MainActivity extends Activity
 								    preferencesEditor.putString("ltx_url_dpi","200");
 									break;                                        
 							}
-//							switch(s2){
-//							    case 0:
-//							 	    preferencesEditor.putString("ltx_url_bg", "Transparent");
-//									break;
-//								case 1:
-//							      	preferencesEditor.putString("ltx_url_bg", "white");
-//									break;
-//								case 2:
-//								    preferencesEditor.putString("ltx_url_bg", "black");
-//									break;									
-//								case 3:
-//								    preferencesEditor.putString("ltx_url_bg", "blue");
-//									break;
-//								case 4:
-//								    preferencesEditor.putString("ltx_url_bg", "green");
-//									break;
-//								case 5:
-//								    preferencesEditor.putString("ltx_url_bg", "yellow");
-//									break;
-//								case 6:
-//								preferencesEditor.putString("ltx_url_bg", "red");
-//									break;
-//							}
 							preferencesEditor.commit();
 							dialog.cancel();
 						}
